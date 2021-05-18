@@ -10,6 +10,11 @@ if __name__ == "__main__":
     #client = EndpointClient()
     #resp = client.get_trains_by_date("2020-01-25")
     #train = Train().from_json(resp[0])
-
-    flow = BookingFlow()
+    if len(sys.argv) == 3:
+        flow = BookingFlow(sys.argv[1], sys.argv[2])
+    elif len(sys.argv) >= 5:
+        flow = BookingFlow(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+    else:
+        flow  = BookingFlow()
+    print("Loading model......")
     result = flow.run()

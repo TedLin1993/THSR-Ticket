@@ -28,11 +28,12 @@ class BookingForm(AbstractParams):
         self._start_station: int = None  # Required
         self._dest_station: int = None  # Required
         self._class_type: int = 0
-        self._seat_prefer: str = "radio17"
+        self._seat_prefer: str = "radio17" #19
         self._search_by: int = 0
+        self._train_no: str = ""
         self._outbound_date: str = None  # Required
         self._outbound_time: str = None  # Required
-        self._inbound_date: str = ""
+        self._inbound_date: str = None
         self._inbound_time: str = ""
         self._adult_ticket_num: str = "1F"
         self._child_ticket_num: str = "0H"
@@ -53,7 +54,7 @@ class BookingForm(AbstractParams):
             "bookingMethod": self._search_by,
             "toTimeInputField": self._outbound_date,
             "toTimeTable": self._outbound_time,
-            "toTrainIDInputField": 0,
+            "toTrainIDInputField": self._train_no,
             "backTimeInputField": self._inbound_date,
             "backTimeTable": self._inbound_time,
             "backTrainIDInputField": "",
@@ -62,7 +63,9 @@ class BookingForm(AbstractParams):
             "ticketPanel:rows:2:ticketAmount": self._disabled_ticket_num,
             "ticketPanel:rows:3:ticketAmount": self._elder_ticket_num,
             "ticketPanel:rows:4:ticketAmount": self._college_ticket_num,
-            "homeCaptcha:securityCode": self.security_code
+            "homeCaptcha:securityCode": self.security_code,
+            "hideBack": 0,
+            "portalTag": False
         }
 
         if val:
@@ -113,6 +116,14 @@ class BookingForm(AbstractParams):
     def search_by(self, value: int) -> None:
         self._validate_value("bookingMethod", value)
         self._search_by = value
+
+    @property
+    def train_no(self) -> str:
+        return self._train_no
+
+    @train_no.setter
+    def train_no(self, value: str) -> None:
+        self._train_no = value
 
     @property
     def outbound_date(self) -> str:

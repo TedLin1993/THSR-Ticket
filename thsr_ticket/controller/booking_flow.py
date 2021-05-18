@@ -19,10 +19,17 @@ from thsr_ticket.view.web.confirm_ticket_info import ConfirmTicketInfo
 from thsr_ticket.view.web.show_booking_result import ShowBookingResult
 from thsr_ticket.view.common import history_info
 from thsr_ticket.model.db import ParamDB, Record
+from thsr_ticket.configs.web.my_info import MyInfoConfig
+from thsr_ticket.captcha.img_recognize import Recognize
 
 
 class BookingFlow:
-    def __init__(self) -> None:
+    def __init__(self, start_station=None, dest_station=None, train_no=None, auto="") -> None:
+        self.start_station = start_station
+        self.dest_station = dest_station
+        self.train_no = None if train_no is None else str(train_no)
+        self.auto = True if auto == "auto" else False
+
         self.client = HTTPRequest()
 
         self.book_form = BookingForm()
@@ -40,14 +47,20 @@ class BookingFlow:
         self.db = ParamDB()
         self.record = Record()
 
+        self.recognizer = Recognize()
+
     def run(self) -> Response:
-        self.show_history()
+        # self.show_history()
 
         # First page. Booking options
         self.set_start_station()
         self.set_dest_station()
-        self.book_form.outbound_date = self.book_info.date_info("出發")
+        self.book_form.outbound_date = self.book_info.date_info("出發", False)
+        self.set_prefer_seat(True)
+        
+        self.set_search_by()
         self.set_outbound_time()
+
         self.set_adult_ticket_num()
         self.book_form.security_code = self.input_security_code()
 
@@ -56,24 +69,26 @@ class BookingFlow:
         if self.show_error(result.content):
             return result
 
-        # Second page. Train confirmation
-        avail_trains = AvailTrains().parse(result.content)
-        sel = self.show_avail_trains.show(avail_trains)
-        value = avail_trains[sel-1].form_value  # Selection from UI count from 1
-        self.confirm_train.selection = value
-        confirm_params = self.confirm_train.get_params()
-        result = self.client.submit_train(confirm_params)
-        if self.show_error(result.content):
-            return result
+        if self.train_no is None:
+            # Second page. Train confirmation
+            avail_trains = AvailTrains().parse(result.content)
+            sel = self.show_avail_trains.show(avail_trains)
+            value = avail_trains[sel-1].form_value  # Selection from UI count from 1
+            self.confirm_train.selection = value
+            confirm_params = self.confirm_train.get_params()
+            result = self.client.submit_train(confirm_params)
+            if self.show_error(result.content):
+                return result
 
         # Third page. Ticket confirmation
         self.set_personal_id()
         self.set_phone()
+        self.set_passenger_num()
         ticket_params = self.confirm_ticket.get_params()
-        result = self.client.submit_ticket(ticket_params)
+        result = self.client.submit_ticket(ticket_params, (self.train_no is not None))
         if self.show_error(result.content):
             return result
-
+        
         result_model = BookingResult().parse(result.content)
         book = ShowBookingResult()
         book.show(result_model)
@@ -92,49 +107,62 @@ class BookingFlow:
         if self.record.start_station is not None:
             self.book_form.start_station = self.record.start_station
         else:
-            self.book_form.start_station = self.book_info.station_info("啟程")
+            self.book_form.start_station = self.book_info.station_info("啟程", self.start_station)
 
     def set_dest_station(self) -> None:
         if self.record.dest_station is not None:
             self.book_form.dest_station = self.record.dest_station
         else:
-            self.book_form.dest_station = self.book_form.dest_station = self.book_info.station_info("到達")
+            self.book_form.dest_station = self.book_form.dest_station = self.book_info.station_info("到達", self.dest_station)
 
     def set_outbound_time(self) -> None:
         if self.record.outbound_time is not None:
             self.book_form.outbound_time = self.record.outbound_time
         else:
-            self.book_form.outbound_time = self.book_info.time_table_info()
+            self.book_form.outbound_time = self.book_info.time_table_info(select=(not self.auto))
+
+    def set_prefer_seat(self, by_window=False) -> None:
+        if by_window:
+            self.book_form.seat_prefer = "radio19"
+
+    def set_search_by(self) -> None:
+        if self.train_no is not None:
+            self.book_form.search_by = 1
+            self.book_form.train_no = self.train_no
 
     def set_adult_ticket_num(self) -> None:
         if self.record.adult_num is not None:
             self.book_form.adult_ticket_num = self.record.adult_num
         else:
-            sel = self.book_info.ticket_num_info("大人", default_value=1)
-            self.book_form.adult_ticket_num = AdultTicket().get_code(sel)
+            self.sel = self.book_info.ticket_num_info("大人", default_value=1, select=(not self.auto))
+            self.book_form.adult_ticket_num = AdultTicket().get_code(self.sel)
 
     def set_personal_id(self) -> None:
         if self.record.personal_id is not None:
             self.confirm_ticket.personal_id = self.record.personal_id
         else:
-            self.confirm_ticket.personal_id = self.confirm_ticket_info.personal_id_info()
+            self.confirm_ticket.personal_id = self.confirm_ticket_info.personal_id_info(MyInfoConfig.ID, (not self.auto))
 
     def set_phone(self) -> None:
         if self.record.phone is not None:
             self.confirm_ticket.phone = self.record.phone
         else:
-            self.confirm_ticket.phone = self.confirm_ticket_info.phone_info()
+            self.confirm_ticket.phone = self.confirm_ticket_info.phone_info(MyInfoConfig.PHONE, (not self.auto))
+
+    def set_passenger_num(self) -> None:
+        self.confirm_ticket.passenger_count = self.sel
 
     def input_security_code(self) -> str:
-        print("等待驗證碼...")
         book_page = self.client.request_booking_page()
         img_resp = self.client.request_security_code_img(book_page.content)
         image = Image.open(io.BytesIO(img_resp.content))
-        print("輸入驗證碼:")
-        img_arr = np.array(image)
-        plt.imshow(img_arr)
-        plt.show()
-        return input()
+        code = self.recognizer.predict(image)
+        print("輸入驗證碼: {code}")
+        return code
+        # img_arr = np.array(image)
+        # plt.imshow(img_arr)
+        # plt.show()
+        # return input()
 
     def show_error(self, html: bytes) -> bool:
         errors = self.error_feedback.parse(html)

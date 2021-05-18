@@ -9,14 +9,17 @@ class ConfirmTicket(AbstractParams):
     def __init_(self) -> None:
         self._personal_id: str = None
         self._phone: str = ""
+        self._passenger_count: int = 1
 
     def get_params(self, val: bool = True) -> Mapping[str, Any]:
         params = {
             "BookingS3FormSP:hf:0": "",
             "diffOver": 1,
-            "idInputRadio": "radio36",
+            "isSPromotion": 1,
+            "passengerCount": self._passenger_count,
+            "idInputRadio": "radio40",
             "idInputRadio:idNumber": self._personal_id,
-            "eaiPhoneCon:phoneInputRadio": "radio43",
+            "eaiPhoneCon:phoneInputRadio": "radio47",
             "eaiPhoneCon:phoneInputRadio:mobilePhone": self._phone,
             "email": "",
             "agree": "on",
@@ -50,3 +53,11 @@ class ConfirmTicket(AbstractParams):
         if len(value) != 0 and not value.startswith("09"):
             raise ValueError("Wrong prefix with the phone number: {}".format(value))
         self._phone = value
+
+    @property
+    def passenger_count(self) -> int:
+        return self._passenger_count
+
+    @passenger_count.setter
+    def passenger_count(self, value: int) -> None:
+        self._passenger_count = value

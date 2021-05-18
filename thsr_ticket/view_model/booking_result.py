@@ -20,6 +20,7 @@ class BookingResult(AbstractViewModel):
     def parse(self, html: bytes) -> List[Ticket]:
         page = self._parser(html)
         ticket = page.find(**BOOKING_RESULT["ticket_id"])
+        print(ticket)
         booking_id = ticket.find_next().text
         deadline = page.find(**BOOKING_RESULT["payment_deadline"]).find_next().text
         outbound_info = self.parse_booking_info(page)

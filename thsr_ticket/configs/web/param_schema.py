@@ -35,7 +35,7 @@ BOOKING_SCHEMA: Mapping[str, Any] = {
                 "1100P", "1130P"
             ]
         },
-        "toTrainIDInputField": {"type": "integer"},
+        "toTrainIDInputField": {"type": "string"},
         "backTimeInputField": {"type": "string"},
         "backTimeTable": {
             "type": "string",
@@ -68,7 +68,9 @@ BOOKING_SCHEMA: Mapping[str, Any] = {
             "type": "string",   # College student ticket (Taiwan only)
             "enum": ["0P", "1P", "2P", "3P", "4P", "5P", "6P", "7P", "8P", "9P", "10P"]
         },
-        "homeCaptcha:securityCode": {"type": "string"}
+        "homeCaptcha:securityCode": {"type": "string"},
+        "hideBack": {"type": "integer"},
+        "portalTag": {"type": "boolean"}
     },
     "required": [
         "selectStartStation", "selectDestinationStation", "toTimeTable",
@@ -92,6 +94,8 @@ CONFIRM_TICKET_SHEMA: Mapping[str, Any] = {
     "properties": {
         "BookingS3FormSP:hf:0": {"type": "string"},
         "diffOver": {"type": "integer"},
+        "isSPromotion": {"type": "integer"},
+        "passengerCount": {"type": "integer"},
         "idInputRadio": {"type": "string"},
         "idInputRadio:idNumber": {"type": "string"},
         "eaiPhoneCon:phoneInputRadio": {"type": "string"},
