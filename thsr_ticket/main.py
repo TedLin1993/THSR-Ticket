@@ -3,6 +3,7 @@ sys.path.append("./")
 
 from thsr_ticket.remote.endpoint_client import EndpointClient
 from thsr_ticket.model.json.v1.train import Train
+print("Loading model......")
 from thsr_ticket.controller.booking_flow import BookingFlow
 
 
@@ -16,5 +17,4 @@ if __name__ == "__main__":
         flow = BookingFlow(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
     else:
         flow  = BookingFlow()
-    print("Loading model......")
     result = flow.run()
