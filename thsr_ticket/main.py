@@ -1,3 +1,5 @@
+from datetime import datetime ,date, timedelta
+import time
 import sys
 sys.path.append("./")
 
@@ -17,4 +19,11 @@ if __name__ == "__main__":
         flow = BookingFlow(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
     else:
         flow  = BookingFlow()
+    
+    # for time
+    if len(sys.argv) == 6:
+        book_date = datetime.strptime(sys.argv[5], "%Y-%m-%d").date()
+        while (date.today()+timedelta(28)<book_date):
+            print("Now is {}, waiting for {}...".format(datetime.now() ,book_date-timedelta(28)))
+            time.sleep(1)
     result = flow.run()
