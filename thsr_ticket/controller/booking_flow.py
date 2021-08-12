@@ -19,16 +19,18 @@ from thsr_ticket.view.web.confirm_ticket_info import ConfirmTicketInfo
 from thsr_ticket.view.web.show_booking_result import ShowBookingResult
 from thsr_ticket.view.common import history_info
 from thsr_ticket.model.db import ParamDB, Record
-from thsr_ticket.configs.web.my_info import MyInfoConfig
 from thsr_ticket.captcha.img_recognize import Recognize
 
 
 class BookingFlow:
-    def __init__(self, start_station=None, dest_station=None, train_no=None, auto="") -> None:
-        self.start_station = start_station
-        self.dest_station = dest_station
-        self.train_no = None if train_no is None else str(train_no)
-        self.auto = True if auto == "auto" else False
+    def __init__(self, args) -> None:
+        self.start_station = args.start_station
+        self.dest_station = args.dest_station
+        self.train_no = args.train_no
+        self.auto = True if args.auto == "auto" else False
+
+        self.id = args.id
+        self.phone = args.phone
 
         self.client = HTTPRequest()
 
@@ -141,13 +143,13 @@ class BookingFlow:
         if self.record.personal_id is not None:
             self.confirm_ticket.personal_id = self.record.personal_id
         else:
-            self.confirm_ticket.personal_id = self.confirm_ticket_info.personal_id_info(MyInfoConfig.ID, (not self.auto))
+            self.confirm_ticket.personal_id = self.confirm_ticket_info.personal_id_info(self.id, (not self.auto))
 
     def set_phone(self) -> None:
         if self.record.phone is not None:
             self.confirm_ticket.phone = self.record.phone
         else:
-            self.confirm_ticket.phone = self.confirm_ticket_info.phone_info(MyInfoConfig.PHONE, (not self.auto))
+            self.confirm_ticket.phone = self.confirm_ticket_info.phone_info(self.phone, (not self.auto))
 
     def set_passenger_num(self) -> None:
         self.confirm_ticket.passenger_count = self.sel
