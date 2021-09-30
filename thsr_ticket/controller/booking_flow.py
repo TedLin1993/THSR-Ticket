@@ -64,12 +64,15 @@ class BookingFlow:
         self.set_outbound_time()
 
         self.set_adult_ticket_num()
-        self.book_form.security_code = self.input_security_code()
-
-        form_params = self.book_form.get_params()
-        result = self.client.submit_booking_form(form_params)
-        if self.show_error(result.content):
-            return result
+        
+        while True:
+            self.book_form.security_code = self.input_security_code()
+            form_params = self.book_form.get_params()
+            result = self.client.submit_booking_form(form_params)
+            if self.show_error(result.content):
+                print(result)
+            else:
+                break
 
         if self.train_no is None:
             # Second page. Train confirmation
