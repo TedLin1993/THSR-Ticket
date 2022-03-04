@@ -1,8 +1,7 @@
 import io
 from PIL import Image
 from requests.models import Response
-import matplotlib.pyplot as plt  # type: ignore
-import numpy as np  # type: ignore
+import ddddocr
 
 from thsr_ticket.remote.http_request import HTTPRequest
 from thsr_ticket.model.web.booking_form.booking_form import BookingForm
@@ -19,7 +18,6 @@ from thsr_ticket.view.web.confirm_ticket_info import ConfirmTicketInfo
 from thsr_ticket.view.web.show_booking_result import ShowBookingResult
 from thsr_ticket.view.common import history_info
 from thsr_ticket.model.db import ParamDB, Record
-from thsr_ticket.captcha.img_recognize import Recognize
 
 
 class BookingFlow:
@@ -49,7 +47,7 @@ class BookingFlow:
         self.db = ParamDB()
         self.record = Record()
 
-        self.recognizer = Recognize()
+        self.ocr = ddddocr.DdddOcr()
 
     def run(self) -> Response:
         # self.show_history()
@@ -69,9 +67,7 @@ class BookingFlow:
             self.book_form.security_code = self.input_security_code()
             form_params = self.book_form.get_params()
             result = self.client.submit_booking_form(form_params)
-            if self.show_error(result.content):
-                print(result)
-            else:
+            if not self.show_error(result.content):
                 break
 
         if self.train_no is None:
@@ -160,14 +156,12 @@ class BookingFlow:
     def input_security_code(self) -> str:
         book_page = self.client.request_booking_page()
         img_resp = self.client.request_security_code_img(book_page.content)
-        image = Image.open(io.BytesIO(img_resp.content))
-        code = self.recognizer.predict(image)
+        if img_resp:
+            code = self.ocr.classification(img_resp.content)
+        else:
+            code = ''
         print("輸入驗證碼: {}".format(code))
         return code
-        # img_arr = np.array(image)
-        # plt.imshow(img_arr)
-        # plt.show()
-        # return input()
 
     def show_error(self, html: bytes) -> bool:
         errors = self.error_feedback.parse(html)

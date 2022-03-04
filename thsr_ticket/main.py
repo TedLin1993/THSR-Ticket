@@ -4,16 +4,10 @@ from argparse import ArgumentParser
 import sys
 sys.path.append("./")
 
-from thsr_ticket.remote.endpoint_client import EndpointClient
-from thsr_ticket.model.json.v1.train import Train
-print("Loading model......")
 from thsr_ticket.controller.booking_flow import BookingFlow
 
 
 if __name__ == "__main__":
-    #client = EndpointClient()
-    #resp = client.get_trains_by_date("2020-01-25")
-    #train = Train().from_json(resp[0])
     parser = ArgumentParser()
     parser.add_argument("--id", help="身分證字號", type=str)
     parser.add_argument("--email", help="信箱", type=str)

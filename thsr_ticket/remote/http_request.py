@@ -27,7 +27,9 @@ class HTTPRequest:
 
     def request_security_code_img(self, book_page: bytes) -> Response:
         img_url = parse_security_img_url(book_page)
-        return self.sess.get(img_url, headers=self.common_head_html)
+        if img_url:
+            return self.sess.get(img_url, headers=self.common_head_html)
+        return None
 
     def submit_booking_form(self, params: Mapping[str, Any]) -> Response:
         url = HTTPConfig.SUBMIT_FORM_URL.format(self.sess.cookies["JSESSIONID"])
@@ -53,4 +55,6 @@ class HTTPRequest:
 def parse_security_img_url(html: bytes) -> str:
     page = BeautifulSoup(html, features="html.parser")
     element = page.find(**BOOKING_PAGE["security_code_img"])
-    return HTTPConfig.BASE_URL + element["src"]
+    if element:
+        return HTTPConfig.BASE_URL + element["src"]
+    return None
