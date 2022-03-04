@@ -16,8 +16,6 @@
   pip install -r requirements.txt
   ```
 
-* Modified [my_info.py](https://github.com/mrwenwei/THSR-Ticket/blob/f4b525ed192898691c650bdd3762bd15ffa77744/thsr_ticket/configs/web/my_info.py#L2) to your own information.
-
 * 執行（不加參數為可彈性選擇之版本）
   ```
   python thsr_ticket/main.py \
