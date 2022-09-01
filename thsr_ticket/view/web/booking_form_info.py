@@ -23,17 +23,17 @@ class BookingFormInfo:
             return int(input("輸入選擇(預設: {}): ".format(str(default_value))) or self.station_mapping[default_value].value)
         return None
 
-    def date_info(self, date_type: str, select: bool = True) -> str:
+    def date_info(self, date_type: str, date, select: bool = True) -> str:
         today = datetime.datetime.now()
         avail_day = today + datetime.timedelta(days=DAYS_BEFORE_BOOKING_AVAILABLE)
         fmt = "%Y/%m/%d"
         
         if select:
-            print("選擇{}日期 ({}~{}) (預設為今日):".format(
-                date_type, today.strftime(fmt), avail_day.strftime(fmt)
-            ))
-            return input() or today.strftime(fmt)
-        print("選擇{}日期: {}".format(date_type, avail_day.strftime(fmt)))
+            # print("選擇{}日期 ({}~{}) (預設為今日):".format(
+            #     date_type, today.strftime(fmt), avail_day.strftime(fmt)
+            # ))
+            return date
+        # print("選擇{}日期: {}".format(date_type, avail_day.strftime(fmt)))
         return avail_day.strftime(fmt)
 
     def ticket_num_info(self, ticket_type: str, default_value: int = 0, select: bool = True) -> int:
@@ -59,4 +59,4 @@ class BookingFormInfo:
             return self.time_table.get_time(
                 int(input("輸入選擇(預設: {}): ".format(default_value)) or default_value)
             )
-        return "1201A"
+        return "700P"

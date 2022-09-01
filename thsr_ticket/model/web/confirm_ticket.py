@@ -6,7 +6,7 @@ from thsr_ticket.configs.web.param_schema import CONFIRM_TICKET_SHEMA
 
 
 class ConfirmTicket(AbstractParams):
-    def __init_(self) -> None:
+    def __init__(self) -> None:
         self._personal_id: str = None
         self._phone: str = ""
         self._passenger_count: int = 1
@@ -17,15 +17,15 @@ class ConfirmTicket(AbstractParams):
             "diffOver": 1,
             "isSPromotion": 1,
             "passengerCount": self._passenger_count,
-            "idInputRadio": "radio40",
-            "idInputRadio:idNumber": self._personal_id,
-            "eaiPhoneCon:phoneInputRadio": "radio47",
-            "eaiPhoneCon:phoneInputRadio:mobilePhone": self._phone,
-            "email": "",
-            "agree": "on",
             "isGoBackM": "",
             "backHome": "",
-            "TgoError": "1"
+            "TgoError": "1",
+            "idInputRadio": 0,
+            "dummyId": self._personal_id,
+            "dummyPhone": self._phone,
+            "email": "",
+            "TicketMemberSystemInputPanel:TakerMemberSystemDataView:memberSystemRadioGroup": "radio40",
+            "agree": "on"
         }
 
         if val:

@@ -28,7 +28,8 @@ class BookingForm(AbstractParams):
         self._start_station: int = None  # Required
         self._dest_station: int = None  # Required
         self._class_type: int = 0
-        self._seat_prefer: str = "radio17" #19
+        self._seat_prefer: str = "radio27" #19
+        self._booking_method: str = "radio27"
         self._search_by: int = 0
         self._train_no: str = ""
         self._outbound_date: str = None  # Required
@@ -47,16 +48,17 @@ class BookingForm(AbstractParams):
             self._inbound_date = self.outbound_date
         params = {
             "BookingS1Form:hf:0": "",
+            "tripCon:typesoftrip": 0,
+            "trainCon:trainRadioGroup": self._class_type,
+            "seatCon:seatRadioGroup": 0,
+            "bookingMethod": self._booking_method,
             "selectStartStation": self._start_station,
             "selectDestinationStation": self._dest_station,
-            "trainCon:trainRadioGroup": self._class_type,
-            "seatCon:seatRadioGroup": self._seat_prefer,
-            "bookingMethod": self._search_by,
             "toTimeInputField": self._outbound_date,
+            "backTimeInputField": self._inbound_date,
             "toTimeTable": self._outbound_time,
             "toTrainIDInputField": self._train_no,
-            "backTimeInputField": self._inbound_date,
-            "backTimeTable": self._inbound_time,
+            "backTimeTable": "",
             "backTrainIDInputField": "",
             "ticketPanel:rows:0:ticketAmount": self._adult_ticket_num,
             "ticketPanel:rows:1:ticketAmount": self._child_ticket_num,
@@ -64,8 +66,11 @@ class BookingForm(AbstractParams):
             "ticketPanel:rows:3:ticketAmount": self._elder_ticket_num,
             "ticketPanel:rows:4:ticketAmount": self._college_ticket_num,
             "homeCaptcha:securityCode": self.security_code,
-            "hideBack": 0,
-            "portalTag": False
+            "SubmitButton": "開始查詢",
+            "portalTag": False,
+            "startTimeForTeenager": "2022/07/01",
+            "endTimeForTeenager": "2022/08/31",
+            "isShowTeenager": 1
         }
 
         if val:
@@ -109,12 +114,19 @@ class BookingForm(AbstractParams):
         self._seat_prefer = value
 
     @property
+    def booking_method(self) -> str:
+        return self._booking_method
+
+    @booking_method.setter
+    def booking_method(self, value: str) -> None:
+        self._booking_method = value
+
+    @property
     def search_by(self) -> int:
         return self._search_by
 
     @search_by.setter
     def search_by(self, value: int) -> None:
-        self._validate_value("bookingMethod", value)
         self._search_by = value
 
     @property

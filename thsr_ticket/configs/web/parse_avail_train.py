@@ -2,7 +2,7 @@
 class ParseAvailTrain:
     from_html = {
         "attrs": {
-            "onmouseout": "this.bgColor='#FFFFFF'"
+            "class": "duration"
         }
     }
 

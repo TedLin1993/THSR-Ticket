@@ -1,0 +1,834 @@
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<!--         <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7" /> -->
+
+        <!-- Google Tag Manager Start -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KCZ6KF6');</script>
+        <!-- Google Tag Manager End -->
+
+        <!-- Global site tag (gtag.js) - Google Analytics Start -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-9967381-28"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'UA-9967381-28');
+        </script>
+        <!-- Global site tag (gtag.js) - Google Analytics End -->
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="台灣高鐵網路訂票，不論商務出差或出遊旅行，隨訂即出發，探索在地美好！✓ 空位車次查詢 ✓ 票價查詢 ✓ 車票預訂與線上付款 ✓ 訂位紀錄查詢/管理 ✓ 商務車廂座位選位 ✓ 下載T-EX app快速取得手機票證">
+
+        <!-- TEMP: -->
+        <!-- 
+        <meta name="robots" content="noindex, nofollow">
+        -->
+
+        <!-- Open Graph Meta -->
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="zh-Hant" />
+        <meta property="og:site_name" content="台灣高鐵網路訂票 | 台灣高鐵" />
+        <meta property="og:title" content="台灣高鐵網路訂票 | 台灣高鐵" />
+        <meta property="og:description" content="台灣高鐵網路訂票，不論商務出差或出遊旅行，隨訂即出發，探索在地美好！✓ 空位車次查詢 ✓ 票價查詢 ✓ 車票預訂與線上付款 ✓ 訂位紀錄查詢/管理 ✓ 商務車廂座位選位 ✓ 下載T-EX app快速取得手機票證" />
+        <meta property="og:url" wicket:message="content=homePageLink" content="https://irs.thsrc.com.tw"/>
+        <meta property="og:image" content="images/common/logo.svg"/>
+
+        <!-- Favicon -->
+        <link sizes="120x120" rel="icon" href="/IMINT/images/common/favicon.png"/>
+        <title>台灣高鐵網路訂位 &gt; 完成訂位</title>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+        <!-- Material Icons -->
+        <link href='https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined' rel='stylesheet'>
+
+        <!-- UIkit CSS -->
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/css/uikit.min.css'/>
+
+        <!-- Flatpickr CSS -->
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css'/>
+
+        <link rel="stylesheet" href="/IMINT/css/styles3.css" type="text/css">
+        <link rel="stylesheet" href="/IMINT/css/rwd_calendar.css" type="text/css">
+        <link rel="stylesheet" href="/IMINT/css/taishin.css" type="text/css">
+    
+<!--         <meta http-equiv="content-language" content="zh-hant-tw"> -->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css" type="text/css" /><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script><script type="text/javascript" src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+
+        <!-- UIkit JS -->
+        <script src='https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit.min.js'></script><script src='https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js'></script>
+
+        <!-- Flatpickr JS -->
+        <script src='https://cdn.jsdelivr.net/npm/flatpickr'></script>
+
+        <!-- Day JS -->
+        <script src='/IMINT/js/dayjs-zhTW.js'></script>
+
+        <!-- ================================= -->
+        <script id="tw-com-mitac-webapp-thsr-viewer-Home-0" type="text/javascript">
+            jQuery.browser = {};
+            (function () {
+                jQuery.browser.msie = false;
+                jQuery.browser.version = 0;
+                if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+                    jQuery.browser.msie = true;
+                    jQuery.browser.version = RegExp.$1;
+                }
+            })();
+        </script>
+        <script src="/IMINT/js/rwd_irs.2.15.min.js" type="text/javascript"></script>
+        <script id="tw-com-mitac-webapp-thsr-viewer-Home-1" type="text/javascript">
+            $(document).ready(function() {
+                // jQuery.blockUI
+                /*
+                $(':submit[id!=paidModifySubmit]:submit[id!=goBackTGO], #SubmitImage').click(function() {
+                    $.blockUI({ message: $('#BusyBoxDiv').html() });
+                });
+
+                // iOS系統  history.back 頁面不會刷新問題
+                $(window).bind("pageshow", function(event) {
+                    if (event.originalEvent.persisted) {
+                        window.location.reload();
+                    }
+                });
+
+                $(window).bind("unload", function(){
+                    $.unblockUI();
+                });
+                */
+
+                $(':submit[id!=paidModifySubmit]:submit[id!=goBackTGO], #SubmitImage').click(function() {
+                   displayMaskFrame();
+                });
+
+                // iOS系統  history.back 頁面不會刷新問題
+                $(window).bind("pageshow", function(event) {
+                    if (event.originalEvent.persisted) {
+                        window.location.reload();
+                    }
+                });
+
+                $(window).bind("load", function(){
+                    hideMaskFrame();
+                });
+
+                $(window).bind("unload", function(){
+                    hideMaskFrame();
+                });
+
+                // 控制錯誤訊息顯示區塊
+                if ($('#feedMSG li').length>0) {
+                     $('#divErrMSG').show();
+                } else {
+                    $('#divErrMSG').hide();
+                }
+            });
+
+            // 顯示遮罩畫面 - 遮罩UI show
+            function displayMaskFrame() {
+                var loadingMask = $("#loadingMask");
+                loadingMask.css({ "z-index": 999999});  //最上層 : 999999 - 1； opacity=透明度(def=1)
+                loadingMask.show();
+
+                var maskFrame = $("#divMaskFrame");
+                maskFrame.css({ "z-index": 999998, "opacity": 0.6 });  //最上層 : 999999 - 1； opacity=透明度(def=1)
+                maskFrame.show();
+            }
+
+            // 隱藏遮罩畫面
+            function hideMaskFrame() {
+                var loadingMask = $("#loadingMask");
+                loadingMask.css({ "z-index": 0});  //最上層 : 999999 - 1； opacity=透明度(def=1)
+                loadingMask.hide();
+
+                var maskFrame = $("#divMaskFrame");
+                maskFrame.css({ "z-index": 0, "opacity": 1 });  //最上層 : 999999 - 1； opacity=透明度(def=1)
+                maskFrame.hide();
+            }
+        </script>
+    
+    <script id="tw-com-mitac-webapp-thsr-viewer-BookingS4-0" type="text/javascript">
+        $(document).ready(function(){
+            $("#heroBG").hide();
+
+            if($('#isCreditCardInfo').val()=="1") {
+                UIkit.modal($('#step4CCModal'), {escClose: false, bgClose: false}).show();
+            } else if($('#isStudentInfo').val()=="1") {
+                UIkit.modal($('#step4StudentModal'), {escClose: false, bgClose: false}).show();
+            } else if($('#isSeatNextTo').val()=="0") {
+                UIkit.modal($('#step4SeatNextToModal'), {escClose: false, bgClose: false}).show();
+            } else if ($('#isIRSTGoRedeem').val()=="1") {
+                UIkit.modal($('#IRSTGoRedeemModal'), {escClose: false, bgClose: false}).show();
+            }
+
+            $('#step4CCModalBtn').click(function() {
+                if($('#isSeatNextTo').val()=="0") {
+                    UIkit.modal($('#step4SeatNextToModal'), {escClose: false, bgClose: false}).show();
+                }
+            });
+
+            $('#step4StudentModalBtn').click(function() {
+                if($('#isSeatNextTo').val()=="0") {
+                    UIkit.modal($('#step4SeatNextToModal'), {escClose: false, bgClose: false}).show();
+                }
+            });
+        });
+    </script>
+<script >bazadebezolkohpepadr="483638019"</script><script type="text/javascript" src="https://irs.thsrc.com.tw/akam/13/1cd3bb8d"  defer></script></head>
+    <body id="mainBody">
+        <input name="dataLang" id="dataLang" type="hidden" value="zh"/>
+        <!-- Google Tag Manager (noscript) Start -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCZ6KF6"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- Google Tag Manager (noscript) End -->
+
+        
+            <div class="hero-bg" id="heroBG" style="display: none;"></div>
+
+            <div id="BusyBoxDiv" style="display: none;">
+                <div id="loading" class="loading center" align="center">
+                    <div>
+                        <span>請稍候...</span>
+                    </div>
+                    <div class ="sp sp-circle"></div>
+                </div>
+            </div>
+
+            <!-- 遮罩UI: 整個畫面不可點選用 -->
+            <div id="divMaskFrame"></div>
+            <div id="loadingMask" class="loading center" align="center" style="display: none;">
+                <div>
+                    <span>請稍候...</span>
+                </div>
+                <div class ="sp sp-circle"></div>
+            </div>
+
+            <!----- header starts ----->
+            <header>
+                <nav class="uk-navbar uk-navbar-container uk-navbar-transparent" uk-navbar="mode: click">
+                    <!-- Navbar Left -->
+                    <div class="uk-navbar-left">
+                        <img src="/IMINT/images/common/logo.svg" alt="" width="125">
+                    </div>
+
+                    <!-- Navbar Right -->
+                    <div class="uk-navbar-right">
+                        <!-- Desktop Menu -->
+                        <ul class="uk-navbar-nav uk-visible@s">
+                            <li>
+                                <a href="#">預訂車票</a>
+                                <div class="uk-navbar-dropdown" uk-dropdown>
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li class="uk-active">
+                                            <a href="/IMINT/">一般訂票</a>
+                                        </li>
+                                        
+                                        
+                                        
+                                        <li>
+                                            <a href="/IMINT/creditcard">信用卡優惠</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">管理訂位</a>
+                                <div class="uk-navbar-dropdown" uk-dropdown>
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li>
+                                            <a href="/IMINT/?wicket:bookmarkablePage=:tw.com.mitac.webapp.thsr.viewer.History">訂位紀錄查詢及修改</a>
+                                        </li>
+                                        <li>
+                                            <a href="/IMINT/?wicket:bookmarkablePage=:tw.com.mitac.webapp.thsr.viewer.QueryPNR">查詢訂位代號</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                
+                                <div class="uk-navbar-dropdown" uk-dropdown>
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- Mobile Menu -->
+                        <button class="btn-toggleMobileMenu uk-hidden@s" uk-navbar-toggle-icon type="button" uk-toggle="target: #mobileMenu"></button>
+                        <div id="mobileMenu" uk-offcanvas="overlay: true; flip: true;">
+                            <div class="uk-offcanvas-bar">
+                                <button class="uk-offcanvas-close" type="button" uk-close></button>
+                                <div class="mobile-menu-content">
+                                    <ul class="uk-nav uk-nav-default">
+                                        <li class="uk-nav-header">
+                                            <span class="material-icons">search</span>預訂車票
+                                        </li>
+                                        <li class="uk-active">
+                                            <a href="/IMINT/">一般訂票</a>
+                                        </li>
+                                        
+                                        
+                                        
+                                        <li>
+                                            <a href="/IMINT/creditcard">信用卡優惠</a>
+                                        </li>
+                                        
+                                        <li class="uk-nav-divider"></li>
+                                        <li class="uk-nav-header ">
+                                            <span class="material-icons-outlined">edit</span>管理訂位
+                                        </li>
+                                        <li>
+                                            <a href="/IMINT/?wicket:bookmarkablePage=:tw.com.mitac.webapp.thsr.viewer.History">訂位紀錄查詢及修改</a>
+                                        </li>
+                                        <li>
+                                            <a href="/IMINT/?wicket:bookmarkablePage=:tw.com.mitac.webapp.thsr.viewer.QueryPNR">查詢訂位代號</a>
+                                        </li>
+                                        <li class="uk-nav-divider"></li>
+                                        
+                                        <li>
+                                            
+                                        </li>
+                                        <li>
+                                            
+                                        </li>
+                                        <li>
+                                            
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END: Mobile Menu -->
+                    </div>
+                </nav>
+            </header>
+            <!----- header ends ----->
+
+            
+    <div class="uk-container uk-container-small">
+        <!-- Stepper -->
+        <div class="stepper-wrapper">
+            <div class="stepper uk-flex">
+                <div class="step done">
+                    <p class="step-content">
+                        <span class="step-num">1.</span>
+                        <span class="step-text">查詢車次</span>
+                    </p>
+                </div>
+                <div class="step divider">&mdash;</div>
+                <div class="step done">
+                    <p class="step-content">
+                        <span class="step-num">2.</span>
+                        <span class="step-text">選擇車次</span>
+                    </p>
+                </div>
+                <div class="step divider">&mdash;</div>
+                <div class="step done">
+                    <p class="step-content">
+                        <span class="step-num">3.</span>
+                        <span class="step-text">取票資訊</span>
+                    </p>
+                </div>
+                <div class="step divider">&mdash;</div>
+                <div class="step current">
+                    <p class="step-content">
+                        <span class="step-num">4.</span>
+                        <span class="step-text">完成訂位</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!----- error message starts ----->
+        <div style="display: none;" id="divErrMSG" class="alert-group">
+            <!-- Error Alert -->
+            <div class="uk-alert-danger" uk-alert>
+                <a class="uk-alert-close uk-close-large" uk-close></a>
+                <div class="alert-content uk-flex" >
+                    <span class="material-icons icon-alert">error</span>
+                    <div id="feedMSG">
+                        <span class="error">
+  
+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----- error message ends ----->
+
+        <!-- Main -->
+        <main class="step-4">
+            <form action="/IMINT/?wicket:interface=:3:BookingS4Form::IFormSubmitListener" id="BookingS4Form" method="post"><div style="display:none"><input type="hidden" name="BookingS4Form:hf:0" id="BookingS4Form:hf:0" /></div>
+
+                <!-- Modal starts -->
+                <input name="isCreditCardInfo" id="isCreditCardInfo" type="hidden" value="0">
+                <div class="" id="step4CCModal" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <p class="modal-title uk-flex uk-flex-middle">
+                            <span class="material-icons">notification_important</span>請注意!
+                        </p>
+                        <div class="modal-content">
+                            <span>本專案優惠依銀行規定另需扣抵信用卡紅利點數、哩程數或加收金額。<br>如紅利點數不足或不符優惠資格時，發卡行將收取部分費用或票價差額。</span>
+                        </div>
+                        <div class="uk-flex uk-flex-right modal-footer">
+                            <input style="outline: none;border: 0px;width: auto;margin-top: auto;" id="step4CCModalBtn" type="button" class="uk-modal-close uk-button uk-button-primary btn-confirm" wicket:message="value=CreditCardconfirm" value="我已了解相關規定"/>
+                        </div>
+                    </div>
+                </div>
+
+                <input name="isStudentInfo" id="isStudentInfo" type="hidden" value="0">
+                <div class="" id="step4StudentModal" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <div class="modal-content">
+                            <ul style="list-style-type: disc;">
+                                
+                                
+                            </ul>
+                        </div>
+                        <div class="uk-flex uk-flex-right modal-footer">
+                            <input style="outline: none;border: 0px;width: auto;margin-top: auto;" id="step4StudentModalBtn" type="button" class="uk-modal-close uk-button uk-button-primary btn-confirm" wicket:message="value=close" value="關閉"/>
+                        </div>
+                    </div>
+                </div>
+
+                <input name="isSeatNextTo" id="isSeatNextTo" type="hidden" value="1">
+                <div class="" id="step4SeatNextToModal" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <p class="modal-title uk-flex uk-flex-middle">
+                            <span class="material-icons">notification_important</span>請注意!
+                        </p>
+                        <div class="modal-content">
+                            <span>本車次剩餘座位有限，已無法安排相鄰座位，請確認可接受此座位安排再進行付款取票！</span>
+                        </div>
+                        <div class="uk-flex uk-flex-right modal-footer">
+                            <input style="outline: none;border: 0px;width: auto;margin-top: auto;" id="btn-confirm" type="button" class="uk-modal-close uk-button uk-button-primary btn-confirm" wicket:message="value=confirm" value="確定"/>
+                        </div>
+                    </div>
+                </div>
+
+                <input name="isIRSTGoRedeem" id="isIRSTGoRedeem" type="hidden" value="0">
+                <div class="" id="IRSTGoRedeemModal" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <p class="modal-title uk-flex uk-flex-middle">
+                            <span class="material-icons icon-warning">warning</span>交易資格不符合
+                        </p>
+                        <div class="modal-content">
+                            本筆訂位紀錄不適用TGo點數折抵。TGo點數折抵適用說明如下：
+                            <ol style="list-style: decimal;margin-left: 1em;">
+                                <li>須為單程票</li>
+                                <li>須含至少1張全額票或法優票（早鳥/大學生等優惠票恕不適用點數折抵）</li>
+                                <li>起訖站不可為南港 – 板橋區間</li>
+                                <li>每張票價不可低於TWD 100</li>
+                            </ol>
+                        </div>
+                        <div class="uk-flex uk-flex-right modal-footer">
+                            <input style="outline: none;border: 0px;width: auto;margin-top: auto;" id="IRSTGoRedeemModalBtn" type="button" class="uk-modal-close uk-button uk-button-primary btn-confirm" wicket:message="value=understand" value="了解"/>
+                        </div>
+                    </div>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <div class="modal-content"></div>
+                        <div class="uk-flex uk-flex-right modal-footer">
+                            <input style="outline: none;border: 0px;width: auto;margin-top: auto;" id="IRSTGoRedeemModalBtn" type="button" class="uk-modal-close uk-button uk-button-primary btn-confirm" wicket:message="value=understand" value="了解"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal end -->
+
+                <!-- Success Alert -->
+                
+    <div class="alert-group">
+        <div uk-alert="" class="uk-alert-success">
+            
+            <div class="alert-content uk-flex">
+                <span class="material-icons icon-warning">check_circle</span>
+                <div>
+                    <div class="alert-body">
+                        <p class="alert-title"><span>您已完成訂位！</span></p>
+                        <p class="description"><span>您尚未付款，請立即付款</span><span>，或記下您的訂位代號，並於指定付款期限內完成付款，逾期未付清款項將自動取消本訂單，謝謝。</span></p>
+                        <p class="description"><span>提醒您，預訂當日早班車者，建議您立即使用線上付款，或前往便利商店付款/取票，以避免受車站營運時間影響而不及取票。</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+	    <!-- Warning Alert: Unpaid -->
+	    
+    </div>
+
+
+                <!-- Ticket Summary (w/ One-way version) -->
+                <section class="uk-card uk-card-default uk-card-body form-card">
+                    <div class="ticket-summary">
+                        <div>
+                            <div class="uk-flex uk-flex-between uk-flex-middle form-title-wrapper">
+                                <h2 class="form-title">訂位明細</h2>
+                                <div>
+                                    <a href="/IMINT/?wicket:interface=:3:BookingS4Form:Button::ILinkListener" class="btn-print">
+                                        <span class="material-icons">home</span>回到首頁
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                            
+    <!-- booking-status -->
+    <div class="booking-status">
+        <div class="uk-overflow-auto table-wrapper">
+            <table class="uk-table uk-table-divider uk-table-middle uk-table-small uk-table-responsive">
+                <caption></caption>
+                <tbody>
+                    <tr>
+                        <td class="td-title" style="width: 25%;">訂位代號</td>
+                        <td class="td-data">
+                            <p class="pnr-code"><span>05297566</span></p>
+                            <p class="payment-status">
+                                <span class="status-unpaid">
+                                    <span>未付款</span><span>（付款期限：</span><span>08/26</span><span>）</span>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-title">取票識別碼</td>
+                        <td class="td-data"><span>T12*****19</span></td>
+                    </tr>
+                    <tr>
+                        <td class="td-title">聯絡電話</td>
+                        <td class="td-data"><span>0921**6587</span></td>
+                    </tr>
+                    <tr>
+                        <td class="td-title">電子郵件</td>
+                        <td class="td-data"><span></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="uk-grid-small uk-child-width-1-1 uk-child-width-1-2@m" uk-grid>
+        <!-- Ticket -->
+        <div>
+            <div class="uk-flex uk-flex-column outbound">
+                <!-- Card -->
+                <div>
+                    <div class="ticket-card">
+                        <div class="uk-flex uk-flex-between card-top">
+                            <div>
+                                <span class="direction"><span>去程</span></span>
+                                <span class="date"><span>08/27</span></span>
+                            </div>
+                            <p class="train-no">
+                                <span class="material-icons-outlined">directions_railway</span><span id="setTrainCode0">675</span>
+                            </p>
+                        </div>
+                        <div class="trip-info uk-flex uk-flex-middle">
+                            <!-- Info Left -->
+                            <div class="departure uk-flex-none">
+                                <p class="departure-time"><span id="setTrainDeparture0">18:46</span></p>
+                                <p class="departure-stn"><span>台北</span></p>
+                            </div>
+                            <!-- Info Center -->
+                            <div class="meta uk-flex-1">
+                                <hr>
+                                <p class="duration">
+                                    <span class="material-icons">schedule</span><span id="InfoEstimatedTime0">1:59</span>
+                                </p>
+                            </div>
+                            <!-- Info Right -->
+                            <div class="arrival uk-flex-none">
+                                <p class="arrival-time"><span id="setTrainArrival0">20:45</span></p>
+                                <p class="arrival-stn"><span>左營</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Deteail -->
+                <div class="detail">
+                    <div class="uk-grid-collapse uk-flex-middle" uk-grid>
+                        <div class="uk-width-auto">
+                            <div class=""><span>座位</span></div>
+                        </div>
+                        <div class="uk-width-expand">
+                            <div class="seating uk-flex uk-flex-right uk-flex-wrap">
+                                
+                                <div class="seat-label">
+                                    <span>9車7A</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Ticket More Info -->
+        <div class="uk-width-expand uk-flex uk-flex-column uk-flex-right">
+            <div class="uk-flex uk-flex-column more-info">
+                <div class="uk-flex uk-flex-between car-type">
+                    <p class="info-title">車廂</p>
+                    <p class="info-data uk-text-right"><span>標準車廂</span></p>
+                </div>
+                <div class="uk-flex uk-flex-between ticket-type">
+                    <p class="info-title">票數</p>
+                    <div class="info-data uk-text-right">
+                        <span><span>全票 1</span> 張</span>
+                    </div>
+                </div>
+                <!-- TEMP: -->
+                <div class="uk-flex uk-flex-between car-type">
+                    <p><span>去程</span></p>
+                    <p class="uk-text-right"><span>TWD 1,490</span></p>
+                </div>
+                <div class="uk-flex uk-flex-between car-type">
+                    <p></p>
+                    <p class="uk-text-right"></p>
+                </div>
+                <!-- END: -->
+
+                <div class="uk-flex uk-flex-wrap uk-flex-between uk-flex-middle ticket-total">
+                    <p class="unit"><span>總票價</span></p>
+                    <div class="price uk-text-right">
+                        
+                        <p>
+                            <span id="setTrainTotalPriceValue">TWD 1,490</span>
+                            
+                        </p>
+                        <!-- If CreditCard -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END: -->
+
+    <div class="reminder-box general">
+        <p class="reminder-title">[提醒]</p>
+        <ul>
+            
+            <span><li style="color: #343436;font-weight: bold;">尖峰車次可能有座位不相鄰之情況，請留意系統顯示之座位資訊。</li></span>
+            <span><li>商務車廂旅客可享線上變更座位服務，每一行程均可重新選位乙次(限非當日行程)。</li></span>
+            
+            
+        </ul>
+    </div>
+
+    
+
+    
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Passenger Info -->
+                
+
+                <!-- Membership Info -->
+                
+
+                <!-- Main Payment Methods -->
+                <!--
+                <section wicket:id="CvsPanel"></section>
+                -->
+
+                <section>
+                    <div class="primary-payment-v2 uk-card uk-card-default uk-card-body form-card">
+                        <!-- v2 -->
+                        <div class="uk-flex uk-flex-between uk-flex-column primary-payment-v2-inner">
+                            
+                                <h2 class="form-title">付款方式</h2>
+                                <!-- Left -->
+                                <div class="uk-flex uk-flex-column inner-left" style="margin-left: 10px;">
+                                    <!-- TGo Points -->
+                                    <label class="uk-flex uk-flex-middle payment-option">
+                                        <input name="payCon:paymentMethod" id="paymentMethod_2" type="radio" value="radio36"/>
+                                        <div>
+                                            <div style="float: left;">
+                                                <img src="/IMINT/images/common/payment/tgo.svg" height="30"/>
+                                            </div>
+                                            <span>點數折抵付款 + 信用卡付款</span>
+                                            <p class="helper-text" style="clear: left"><span>(會員帳號內至少累積300點(含)以上紅利點數，始可折抵)</span></p>
+                                        </div>
+                                    </label>
+
+                                    <!-- Regular: VISA / MasterCard / JCB / UnionPay / Taiwan Pay / Gama Pay -->
+                                    <label class="uk-flex uk-flex-middle payment-option">
+                                        <input name="payCon:paymentMethod" id="paymentMethod_0" type="radio" value="radio37">
+                                        <div>
+                                            <span class="card-group uk-flex uk-flex-middle uk-flex-nowrap">
+                                                <img src="/IMINT/images/common/payment/visa-v3.png" alt="Visa" height="30"/>
+                                                <img src="/IMINT/images/common/payment/master-v2.png" alt="MasterCard" height="30"/>
+                                                <img src="/IMINT/images/common/payment/jcb-v2.png" alt="JCB" height="30"/>
+                                                <img src="/IMINT/images/common/payment/unionpay-v2.png" alt="UnionPay" height="30"/>
+                                                <img src="/IMINT/images/common/payment/tw-pay.png" alt="Taiwan Pay" class="uk-visible@s" height="30"/>
+                                                <img src="/IMINT/images/common/payment/gama-pay.png" alt="Gama Pay" class="uk-visible@s" height="30"/>
+                                            </span>
+                                            <p class="helper-text"><span>(VISA / MasterCard / JCB / 銀聯卡<span class="uk-visible@s">/ 台灣 Pay / 橘子支付</span>)</span></p>
+                                        </div>
+                                        
+                                    </label>
+
+                                    <!-- Regular: American Express -->
+                                    <label class="uk-flex uk-flex-middle payment-option">
+                                        <input name="payCon:paymentMethod" id="paymentMethod_1" type="radio" value="radio38"/>
+                                        <div>
+                                            <span class="card-group uk-flex uk-flex-middle">
+                                                <img src="/IMINT/images/common/payment/ae.png" alt="American Express" width="50"/>
+                                            </span>
+                                            <p class="helper-text"><span>(美國運通)</span></p>
+                                        </div>
+                                    </label>
+                                </div>
+                            
+                            <!-- Right -->
+                            <div class="inner-right">
+                                <input hidefocus="" name="payCon:SubmitButton" style="outline: none;border: 0px;" id="SubmitButton" type="submit" class="uk-align-center uk-button btn-pay uk-button-primary" value="立即付款"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="notice notice-card">
+                    <ul uk-accordion >
+                        <li class="uk-open">
+                            <a href="#" class="uk-accordion-title"><span>付款 / </span><span>取票</span></a>
+                            <div class="uk-accordion-content">
+                                <!-- Other Payment Methods -->
+                                <div class="secondary-payment">
+                                    <div class="payment-group uk-grid-collapse uk-child-width-1-1 uk-child-width-1-3@s" uk-grid>
+                                        <!-- Payment Item #1 -->
+                                        <div>
+                                            <div class="payment-item uk-flex uk-flex-column uk-flex-middle">
+                                                <!-- Icon -->
+                                                <div class="icon-wrapper">
+                                                    <img src="/IMINT/images/tw/tickets/stores.png">
+                                                </div>
+                                                <!-- Content -->
+                                                <div class="content uk-text-center">
+                                                    <p class="title">便利商店</p>
+                                                    <a rel="noopener" href="https://www.thsrc.com.tw/ArticleContent/baba745a-d802-440c-b762-3eef37b96b60" class="btn-link" target="_blank">
+                                                        便利商店購票說明
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Payment Item #2 -->
+                                        <div>
+                                            <div class="payment-item uk-flex uk-flex-column uk-flex-middle">
+                                                <!-- Icon -->
+                                                <div class="icon-wrapper">
+                                                    <img src="/IMINT/images/tw/tickets/tex.png">
+                                                </div>
+                                                <!-- Content -->
+                                                <div class="content uk-text-center">
+                                                    <p class="title">「T-EX行動購票」APP</p>
+                                                    <a rel="noopener" href="https://www.thsrc.com.tw/ArticleContent/4d262503-84bc-4963-a58e-4ca1a6453ad3" class="btn-link" target="_blank">
+                                                        詳細說明
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Payment Item #3 -->
+                                        <div>
+                                            <div class="payment-item uk-flex uk-flex-column uk-flex-middle">
+                                                <!-- Icon -->
+                                                <div class="icon-wrapper">
+                                                    <img src="/IMINT/images/tw/tickets/stn-2.jpg">
+                                                </div>
+                                                <!-- Content -->
+                                                <div class="content uk-text-center">
+                                                    <p class="title">全國高鐵車站</p>
+                                                    <a rel="noopener" href="https://www.thsrc.com.tw/ArticleContent/2f940836-cedc-41ef-8e28-c2336ac8fe68" class="btn-link" target="_blank">
+                                                        查詢地點
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                
+    <section class="notice notice-card">
+        <ul uk-accordion>
+            <li class="uk-open">
+                <a class="uk-accordion-title" href="#">注意事項</a>
+                <div class="uk-accordion-content">
+                    <div class="notice-content">
+                        <ol>
+                            <li>訂位時輸入電子郵件或行動電話者，本服務於完成訂位後，將自動寄發訂位確認信函或手機簡訊。</li>
+                            <li>帳號內累積300點(含)以上紅利點數，始可使用TGo點數折抵付款。</li>
+                            <li>TGo 點數折抵票款僅限適用於全額及法優車票，其餘優惠方案票種（如：早鳥、大學生、少年與信用卡優惠）恕不適用，依高鐵企業網站公告為主。</li>
+                            <li>銀行點數亦可轉換為TGo點數，詳細請參閱<a target="_blank" rel="noopener" href="https://www.thsrc.com.tw/ArticleContent/b8cedefe-62fa-459e-9d1e-aac0e0f754a2">會員權益</a>。</li>
+                            <li>付款完成後，系統將產生一組訂位代號。利用訂位代號可快速查詢您的訂位資訊，請務必妥善保管訂位代號以備查詢訂位紀錄及取票時使用。建議您將訂位完成之確認網頁予以列印保存。</li>
+                            <li><span><font style="color: #343436;font-weight: bold;">已付款之訂位紀錄，每段行程各可於本服務辦理「變更行程」乙次，免收手續費，之後如欲再次變更，須辦理「取消訂位」後重購；「減少人數」、「刪減行程」及「取消訂位」皆須收取相關手續費用(【信用卡優惠專區】除外)。</font></span></li>
+                            <li><span>您付款完成後可於高鐵車站、本公司合作之便利商店或T-EX行動購票App取票（<a target="_blank" rel="noopener" href="https://www.thsrc.com.tw/ArticleContent/58764cad-504a-486c-b1dc-f42aaa4f3552">T-EX取票及分票作業規定，詳參高鐵企業網站專頁說明</a>)，<font style="color: #343436;font-weight: bold;">惟透過便利商店取票，每張乘車票將依便利商店規定額外收取手續費。</font></span></li>
+                            <li><span>選擇至車站取票者，請於本公司各車站售票時間內至售票窗口或自動售票機，憑取票識別碼欄位使用之身分證字號（外籍旅客則憑護照號碼）及訂位代號取票；<font style="color: #343436;font-weight: bold;">如於售票窗口取票，並應出示取票識別碼欄位使用之身分證明文件。</font></span></li>
+                            <li><span>訂位紀錄中含敬老/愛心票者，可至車站售票窗口或本公司合作之便利商店付款/取票，取票時須核驗搭乘者之身分證明文件（如：身分證、身心障礙證明）。凡透過車站窗口購/取敬老/愛心票的旅客，自該次購/取票的翌日起至次年年底前，可開放使用自動售票機、T Express行動購票App取票（身心障礙證明之重新鑑定日期如早於次年年底，以該重新鑑定日期為限）。</span></li>
+                            <li>請務必留意您的乘車時間並提前完成取票手續，倘因旅客不及取票致無法搭乘所訂車次之情形發生，恕不受理退費。</li>
+                            <li>請依票面所載車次及車廂座位搭乘。持指定車次折扣票改乘其他車次或較高票價車廂者，恕不再享有原優惠，除應補足票價差額外，本公司並得加收已乘區間票價差額50%之違約金。</li>
+                            <li>標準車廂座位排列為ABC/DE，商務車廂座位排列為AC/DE。各列車靠窗座位A/E；走道座位C/D。</li>
+                            <li><span>為確保線上付款安全，請檢視瀏覽器參數設定，詳見高鐵企業網站最新消息。</span></li>
+                            
+                        </ol>
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+            </form>
+
+        </main>
+    </div>
+
+
+            <!----- footer starts ----->
+            <footer>
+                <div id="footer" class="footer-links" >
+                    <p>
+                        <a rel="noopener" href="https://www.thsrc.com.tw/ArticleContent/F00BD7D4-7C62-44EC-9758-053934AE06E0" target="_blank" onclick="gtag('event', 'Footer_Click', {'event_category': 'IRS_Footer','event_label': 'Footer_常見問題'});">常見問題</a> |
+                        <a rel="noopener" href="https://www.thsrc.com.tw/ArticleContent/291d80fe-080f-4442-90d0-9a9b82f119e5" target="_blank" onclick="gtag('event', 'Footer_Click', {'event_category': 'IRS_Footer','event_label': 'Footer_交易注意事項'});">交易注意事項</a> |
+                        <a rel="noopener" href="https://www.thsrc.com.tw/ArticleContent/d1fa3bcb-a016-47e2-88c6-7b7cbed00ed5" target="_blank" onclick="gtag('event', 'Footer_Click', {'event_category': 'IRS_Footer','event_label': 'Footer_個人資料保護專區'});">個人資料保護專區</a> |
+                        <a rel="noopener" href="https://www.thsrc.com.tw/ArticleContent/dea241a9-fe69-4e9d-b9a5-6caed6e486d6" target="_blank" onclick="gtag('event', 'Footer_Click', {'event_category': 'IRS_Footer','event_label': 'Footer_網路訂票說明'});">網路訂票說明</a> |
+                        <a rel="noopener" href="https://www.thsrc.com.tw" target="_blank" onclick="gtag('event', 'Footer_Click', {'event_category': 'IRS_Footer','event_label': 'Footer_企業網站'});">企業網站</a> |
+                        <a rel="noopener" href="https://www.thsrc.com.tw/ArticleContent/AFAC38BD-AC68-419A-9B7F-E5C0EBCE3CE8" target="_blank" onclick="gtag('event', 'Footer_Click', {'event_category': 'IRS_Footer','event_label': 'Footer_聯絡我們'});">聯絡我們</a>
+                    </p>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 台灣高速鐵路股份有限公司 Taiwan High Speed Rail Corporation.</p>
+                </div>
+            </footer>
+            <!----- footer ends ----->
+        
+
+        <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+    <noscript><img src="https://irs.thsrc.com.tw/akam/13/pixel_1cd3bb8d?a=dD1jNWIwYTRhYmE4YWRlZTE5OWRkNDQyOWRjNDBkMDYzNWZiN2JjM2IyJmpzPW9mZg==" style="visibility: hidden; position: absolute; left: -999px; top: -999px;" /></noscript></body>
+</html>

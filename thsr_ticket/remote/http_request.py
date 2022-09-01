@@ -44,8 +44,9 @@ class HTTPRequest:
         )
 
     def submit_ticket(self, params: Mapping[str, Any], by_train_no: bool) -> Response:
+        url = HTTPConfig.CONFIRM_TICKET_URL2.format(self.sess.cookies["JSESSIONID"])
         return self.sess.post(
-            HTTPConfig.CONFIRM_TICKET_URL2 if by_train_no else HTTPConfig.CONFIRM_TICKET_URL,
+            url if by_train_no else HTTPConfig.CONFIRM_TICKET_URL,
             headers=self.common_head_html,
             params=params,
             allow_redirects=True

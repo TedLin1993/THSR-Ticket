@@ -2,6 +2,7 @@ import io
 from PIL import Image
 from requests.models import Response
 import ddddocr
+import time
 
 from thsr_ticket.remote.http_request import HTTPRequest
 from thsr_ticket.model.web.booking_form.booking_form import BookingForm
@@ -26,6 +27,8 @@ class BookingFlow:
         self.dest_station = args.dest_station
         self.train_no = args.train_no
         self.auto = True if args.auto == "auto" else False
+        self.outBoundDate = args.date
+        self.inBoundDate = args.date
 
         self.id = args.id
         self.phone = args.phone
@@ -50,36 +53,37 @@ class BookingFlow:
         self.ocr = ddddocr.DdddOcr()
 
     def run(self) -> Response:
-        # self.show_history()
-
-        # First page. Booking options
         self.set_start_station()
         self.set_dest_station()
-        self.book_form.outbound_date = self.book_info.date_info("出發", False)
-        self.set_prefer_seat(True)
-        
+        self.book_form.outbound_date = self.outBoundDate
+        self.book_form.inbound_date = self.inBoundDate
+        self.set_prefer_window_seat(False)
+        self.set_booking_method(self.train_no is not None)
         self.set_search_by()
         self.set_outbound_time()
-
         self.set_adult_ticket_num()
         
         while True:
-            self.book_form.security_code = self.input_security_code()
-            form_params = self.book_form.get_params()
-            result = self.client.submit_booking_form(form_params)
-            if not self.show_error(result.content):
+            while True:
+                # First page. Booking options
+                self.book_form.security_code = self.input_security_code()
+                form_params = self.book_form.get_params()
+                result = self.client.submit_booking_form(form_params)
+                if not self.show_error(result.content):
+                    break
+                self.client = HTTPRequest()
+            if self.train_no is not None:
                 break
 
-        if self.train_no is None:
             # Second page. Train confirmation
-            avail_trains = AvailTrains().parse(result.content)
-            sel = self.show_avail_trains.show(avail_trains)
-            value = avail_trains[sel-1].form_value  # Selection from UI count from 1
-            self.confirm_train.selection = value
+            # Only if booking method is 
+            self.confirm_train.selection = "radio18" # Select first train
             confirm_params = self.confirm_train.get_params()
-            result = self.client.submit_train(confirm_params)
-            if self.show_error(result.content):
-                return result
+            result = self.client.submit_train(confirm_params).content
+            if not self.show_error(result):
+                break
+            self.client = HTTPRequest()
+            time.sleep(1)
 
         # Third page. Ticket confirmation
         self.set_personal_id()
@@ -89,10 +93,11 @@ class BookingFlow:
         result = self.client.submit_ticket(ticket_params, (self.train_no is not None))
         if self.show_error(result.content):
             return result
-        
+
         result_model = BookingResult().parse(result.content)
         book = ShowBookingResult()
         book.show(result_model)
+
         print("\n請使用官方提供的管道完成後續付款以及取票!!")
 
         self.db.save(self.book_form, self.confirm_ticket)
@@ -122,9 +127,13 @@ class BookingFlow:
         else:
             self.book_form.outbound_time = self.book_info.time_table_info(select=(not self.auto))
 
-    def set_prefer_seat(self, by_window=False) -> None:
+    def set_prefer_window_seat(self, by_window=False) -> None:
         if by_window:
             self.book_form.seat_prefer = "radio19"
+
+    def set_booking_method(self, by_trainId=False) -> None:
+        if by_trainId:
+            self.book_form.booking_method = "radio29"
 
     def set_search_by(self) -> None:
         if self.train_no is not None:
@@ -169,4 +178,5 @@ class BookingFlow:
             return False
 
         self.show_error_msg.show(errors)
+        self.error_feedback = ErrorFeedback()
         return True
