@@ -14,8 +14,11 @@ class ErrorFeedback(AbstractViewModel):
 
     def parse(self, html: bytes) -> List[Error]:
         page = self._parser(html)
-        items = page.find_all(**ERROR_FEEDBACK)
+        items = page.find_all(**ERROR_FEEDBACK["error_content"])
+        items2 = page.find_all(**ERROR_FEEDBACK["feedbackPanelERROR"])
         for it in items:
+            self.errors.append(Error(it.text))
+        for it in items2:
             self.errors.append(Error(it.text))
 
         return self.errors

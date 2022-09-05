@@ -76,7 +76,7 @@ class BookingFlow:
                 break
 
             # Second page. Train confirmation
-            # Only if booking method is 
+            # This page is only required for selecting by time
             self.confirm_train.selection = "radio18" # Select first train
             confirm_params = self.confirm_train.get_params()
             result = self.client.submit_train(confirm_params).content

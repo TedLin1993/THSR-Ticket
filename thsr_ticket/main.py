@@ -16,13 +16,13 @@ if __name__ == "__main__":
     parser.add_argument("--dest_station", help="終點站 Ex. Zuouing", type=str)
     parser.add_argument("--auto", help="是否自動完成所有流程 Ex. auto", type=str)
     parser.add_argument("--train_no", help="列車代號", type=str)
-    parser.add_argument("--date", help="訂票日期 Ex. 2021-01-01", type=str)
+    parser.add_argument("--date", help="訂票日期 Ex. 2021/01/01", type=str)
     args = parser.parse_args()
 
     flow = BookingFlow(args)
 
     if args.date:
-        book_date = datetime.strptime(args.date, "%Y-%m-%d").date()
+        book_date = datetime.strptime(args.date, "%Y/%m/%d").date()
         if book_date.weekday()<=4:
             # Monday to Friday
             while (date.today()+timedelta(28)<book_date):

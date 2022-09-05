@@ -11,9 +11,17 @@ BOOKING_PAGE: Mapping[str, Any] = {
 }
 
 ERROR_FEEDBACK: Mapping[str, Any] = {
-    "name": "div",
-    "attrs": {
-        "class": "error-content"
+    "error_content": {
+        "name": "div",
+        "attrs": {
+            "class": "error-content"
+        }
+    },
+    "feedbackPanelERROR": {
+        "name": "span",
+        "attrs": {
+            "class": "feedbackPanelERROR"
+        }
     }
 }
 
