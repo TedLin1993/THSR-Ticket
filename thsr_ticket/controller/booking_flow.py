@@ -26,7 +26,6 @@ class BookingFlow:
         self.start_station = args.start_station
         self.dest_station = args.dest_station
         self.train_no = args.train_no
-        self.auto = True if args.auto == "auto" else False
         self.outBoundDate = args.date
         self.inBoundDate = args.date
         self.outBoundTime = args.time
@@ -128,7 +127,7 @@ class BookingFlow:
         elif self.outBoundTime is not None:
             self.book_form.outbound_time = self.outBoundTime
         else:
-            self.book_form.outbound_time = self.book_info.time_table_info(select=(not self.auto))
+            self.book_form.outbound_time = self.book_info.time_table_info()
 
     def set_prefer_window_seat(self, by_window=False) -> None:
         if by_window:
@@ -147,20 +146,21 @@ class BookingFlow:
         if self.record.adult_num is not None:
             self.book_form.adult_ticket_num = self.record.adult_num
         else:
-            self.sel = self.book_info.ticket_num_info("大人", default_value=1, select=(not self.auto))
+            # Only select one ticket
+            self.sel = self.book_info.ticket_num_info("大人", default_value=1, select=False)
             self.book_form.adult_ticket_num = AdultTicket().get_code(self.sel)
 
     def set_personal_id(self) -> None:
         if self.record.personal_id is not None:
             self.confirm_ticket.personal_id = self.record.personal_id
         else:
-            self.confirm_ticket.personal_id = self.confirm_ticket_info.personal_id_info(self.id, (not self.auto))
+            self.confirm_ticket.personal_id = self.confirm_ticket_info.personal_id_info(self.id, False)
 
     def set_phone(self) -> None:
         if self.record.phone is not None:
             self.confirm_ticket.phone = self.record.phone
         else:
-            self.confirm_ticket.phone = self.confirm_ticket_info.phone_info(self.phone, (not self.auto))
+            self.confirm_ticket.phone = self.confirm_ticket_info.phone_info(self.phone, False)
 
     def set_passenger_num(self) -> None:
         self.confirm_ticket.passenger_count = self.sel
