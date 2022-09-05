@@ -29,6 +29,7 @@ class BookingFlow:
         self.auto = True if args.auto == "auto" else False
         self.outBoundDate = args.date
         self.inBoundDate = args.date
+        self.outBoundTime = args.time
 
         self.id = args.id
         self.phone = args.phone
@@ -124,6 +125,8 @@ class BookingFlow:
     def set_outbound_time(self) -> None:
         if self.record.outbound_time is not None:
             self.book_form.outbound_time = self.record.outbound_time
+        elif self.outBoundTime is not None:
+            self.book_form.outbound_time = self.outBoundTime
         else:
             self.book_form.outbound_time = self.book_info.time_table_info(select=(not self.auto))
 
