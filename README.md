@@ -32,7 +32,7 @@
     --start_station Zuouing \
     --dest_station Taipei \
     --train_no xxx \
-    --date yyyy-MM-dd \
+    --date yyyy/MM/dd \
     --time 700P
   ```
 
