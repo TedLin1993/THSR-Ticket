@@ -126,6 +126,8 @@ class BookingFlow:
             self.book_form.outbound_time = self.record.outbound_time
         elif self.outBoundTime is not None:
             self.book_form.outbound_time = self.outBoundTime
+        elif self.train_no is not None:
+            self.book_form.outbound_time = ""
         else:
             self.book_form.outbound_time = self.book_info.time_table_info()
 
