@@ -72,9 +72,10 @@ class BookingFlow:
                 if not self.show_error(result.content):
                     break
                 self.client = HTTPRequest()
+                time.sleep(1)
+
             if self.train_no is not None:
                 break
-
             # Second page. Train confirmation
             # This page is only required for selecting by time
             self.confirm_train.selection = "radio18" # Select first train
