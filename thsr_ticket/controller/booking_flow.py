@@ -29,6 +29,7 @@ class BookingFlow:
         self.outBoundDate = args.date
         self.inBoundDate = args.date
         self.outBoundTime = args.time
+        self.headCount = args.head_count
 
         self.id = args.id
         self.phone = args.phone
@@ -69,22 +70,23 @@ class BookingFlow:
                 self.book_form.security_code = self.input_security_code()
                 form_params = self.book_form.get_params()
                 result = self.client.submit_booking_form(form_params)
+
                 if not self.show_error(result.content):
                     break
                 self.client = HTTPRequest()
-                time.sleep(1)
+                time.sleep(2)
 
             if self.train_no is not None:
                 break
             # Second page. Train confirmation
             # This page is only required for selecting by time
-            self.confirm_train.selection = "radio18" # Select first train
+            self.confirm_train.selection = "radio22" # Select first train
             confirm_params = self.confirm_train.get_params()
             result = self.client.submit_train(confirm_params).content
             if not self.show_error(result):
                 break
             self.client = HTTPRequest()
-            time.sleep(1)
+            time.sleep(2)
 
         # Third page. Ticket confirmation
         self.set_personal_id()
@@ -120,7 +122,7 @@ class BookingFlow:
         if self.record.dest_station is not None:
             self.book_form.dest_station = self.record.dest_station
         else:
-            self.book_form.dest_station = self.book_form.dest_station = self.book_info.station_info("到達", self.dest_station)
+            self.book_form.dest_station = self.book_info.station_info("到達", self.dest_station)
 
     def set_outbound_time(self) -> None:
         if self.record.outbound_time is not None:
@@ -138,7 +140,7 @@ class BookingFlow:
 
     def set_booking_method(self, by_trainId=False) -> None:
         if by_trainId:
-            self.book_form.booking_method = "radio29"
+            self.book_form.booking_method = "radio33"
 
     def set_search_by(self) -> None:
         if self.train_no is not None:
@@ -148,6 +150,9 @@ class BookingFlow:
     def set_adult_ticket_num(self) -> None:
         if self.record.adult_num is not None:
             self.book_form.adult_ticket_num = self.record.adult_num
+        elif self.headCount is not None:
+            self.sel = self.book_info.ticket_num_info("大人", default_value=self.headCount, select=False)
+            self.book_form.adult_ticket_num = AdultTicket().get_code(self.sel)
         else:
             # Only select one ticket
             self.sel = self.book_info.ticket_num_info("大人", default_value=1, select=False)

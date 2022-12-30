@@ -43,3 +43,4 @@ nodeLanguageServer/**
 nodeLanguageServer.*/**
 .db/
 .vscode/
+output.html

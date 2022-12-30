@@ -29,7 +29,7 @@ class BookingForm(AbstractParams):
         self._dest_station: int = None  # Required
         self._class_type: int = 0
         self._seat_prefer: str = "radio27" #19
-        self._booking_method: str = "radio27"
+        self._booking_method: str = "radio31"
         self._search_by: int = 0
         self._train_no: str = ""
         self._outbound_date: str = None  # Required
@@ -70,7 +70,7 @@ class BookingForm(AbstractParams):
             "portalTag": False,
             "startTimeForTeenager": "2022/07/01",
             "endTimeForTeenager": "2022/08/31",
-            "isShowTeenager": 1
+            "isShowTeenager": 0
         }
 
         if val:

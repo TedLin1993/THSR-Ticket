@@ -18,6 +18,7 @@ if __name__ == "__main__":
     parser.add_argument("--train_no", help="列車代號", type=str)
     parser.add_argument("--date", help="訂票日期 Ex. 2021/01/01", type=str)
     parser.add_argument("--time", help="訂票起始時間 Ex. 700P", type=str)
+    parser.add_argument("--head_count", help="人數 Ex. 1", type=str)
     args = parser.parse_args()
 
     flow = BookingFlow(args)

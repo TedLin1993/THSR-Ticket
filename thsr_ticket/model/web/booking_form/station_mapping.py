@@ -13,4 +13,4 @@ class StationMapping(Enum):
     Yunlin = 9
     Chiayi = 10
     Tainan = 11
-    Zuouing = 12
+    Zuoying = 12

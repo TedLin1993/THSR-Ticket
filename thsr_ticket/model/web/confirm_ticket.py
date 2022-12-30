@@ -24,7 +24,7 @@ class ConfirmTicket(AbstractParams):
             "dummyId": self._personal_id,
             "dummyPhone": self._phone,
             "email": "",
-            "TicketMemberSystemInputPanel:TakerMemberSystemDataView:memberSystemRadioGroup": "radio40",
+            "TicketMemberSystemInputPanel:TakerMemberSystemDataView:memberSystemRadioGroup": "radio44",
             "agree": "on"
         }
 

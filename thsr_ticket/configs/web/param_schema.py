@@ -21,7 +21,7 @@ BOOKING_SCHEMA: Mapping[str, Any] = {
             "enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         },
         "bookingMethod": {
-            "type": "string",  # radio29: search by train_id, radio27: search by time
+            "type": "string",  # radio33: search by train_id, radio31: search by time
         },
         "toTimeInputField": {"type": "string"},  # format: yyyy/mm/dd
         "toTimeTable": {
